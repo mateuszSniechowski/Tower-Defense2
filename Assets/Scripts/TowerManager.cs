@@ -78,14 +78,23 @@ public class TowerManager : MonoBehaviour
             GameObject newTower = Instantiate(towerBtnPressed.TowerObject);
             newTower.transform.position = hit.transform.position;
             RegisterTower(newTower);
+            BuyTower(towerBtnPressed.TowerPrice);
             DisabledragSprite();
         }
     }
 
+    public void BuyTower(int price)
+    {
+        GameManager.instance.ReduceGold(price);
+    }
+
     public void SelectedTower(TowerButton towerBtn)
     {
-        towerBtnPressed = towerBtn;
-        EnabledragSprite(towerBtn.DragSprite);
+        if(towerBtn.TowerPrice <= GameManager.instance.currentGold)
+        {
+            towerBtnPressed = towerBtn;
+            EnabledragSprite(towerBtn.DragSprite);
+        }
     }
 
     public void followMouse()

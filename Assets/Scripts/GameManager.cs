@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    const float waitingTime = 1;
+    public float waitingTime = 1;
     public GameObject spawnPoint;
     public GameObject[] enemies;
     public int maxEnemiesOnScreen;
     public int enemiesOnScreen;
     public int totalEnemies;
     public int enemiesPerSpawn;
+    public int currentGold;
+    public Text goldText;
 
 
     private void Awake()
@@ -27,7 +30,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        goldText.text = currentGold.ToString();
+    }
+
+    public void AddGold(int amount)
+    {
+        currentGold += amount;
+    }
+
+    public void ReduceGold(int amount)
+    {
+        currentGold -= amount;
     }
 
     IEnumerator Spawn()
@@ -38,7 +51,7 @@ public class GameManager : MonoBehaviour
             {
                 if(enemiesOnScreen < maxEnemiesOnScreen)
                 {
-                    GameObject newEnemy = Instantiate(enemies[0] as GameObject);
+                    GameObject newEnemy = Instantiate(enemies[Random.Range(0,4)] as GameObject);
                     newEnemy.transform.position = spawnPoint.transform.position;
                     enemiesOnScreen += 1;
                 }
