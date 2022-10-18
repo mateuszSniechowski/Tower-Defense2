@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 3548888314112391383}
   - component: {fileID: 3548888314112391380}
   - component: {fileID: 3548888314112391381}
+  - component: {fileID: 8850545741873757974}
   - component: {fileID: -6842428433520814804}
   - component: {fileID: 3608089515295314838}
   - component: {fileID: -5286910610658227118}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +106,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8850545741873757974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548888314112391386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9428b7cf78b43431f8e5216de836ca6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 3548888314112391381}
+  currentHealth: 50
+  maxHealth: 50
+  isDead: 0
+  goldToGive: 10
+  hitEffect: {fileID: 1678028160963887232, guid: 5ce02a171c82b458fa5ab192ea54683d, type: 3}
 --- !u!50 &-6842428433520814804
 Rigidbody2D:
   serializedVersion: 4
@@ -136,7 +155,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.67605627, y: 0.035312176}
